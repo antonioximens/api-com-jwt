@@ -1,15 +1,16 @@
 const express = require('express')
 const authController = require('../controllers/auth-controller')
 const welcomeController = require('../controllers/welcome-controller')
-const { optionalAuth } = require('../middlewares/auth-middleware')
+const { optionalAuth} = require('../middlewares/auth-middleware')
 
-const router = express.Router()
+
+const routerAuth = express.Router()
 
 // POST auth/register
-router.post('/register', authController.resgiter)
-router.post('/login', authController.login)
+routerAuth.post('/register', authController.resgiter)
+routerAuth.post('/login', authController.login)
 
 // GET /welcome
-router.get('/welcome', optionalAuth,welcomeController.welcome)
+routerAuth.get('/welcome', optionalAuth,welcomeController.welcome)
 
-module.exports = router 
+module.exports = routerAuth 
